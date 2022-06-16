@@ -1,0 +1,29 @@
+<h1 style="text-align:center;">To-Do List</h1>
+
+<div class="float-parent-element">
+    <div class="float-child-element">
+        <div style="background-color: aquamarine ; height:500px; padding:10px;">
+            <center>
+                <p>Enter text here <input type="text" ng-model="task"></p>
+                <input type="button" value="Add" ng-click="add1()">
+                <p>Task pending: </p>
+                <ul>
+                    <li ng-repeat="item in list"> {{ item }} </li>
+                </ul>
+            </center>
+        </div>
+    </div>
+
+    <div class="float-child-element">
+        <div style="background-color:palevioletred; height:500px; padding:10px;">
+            <center>
+                <p>Enter number to mark as completed <input type="number" ng-model="taskdone"></p>
+                <input type="button" value="Task Done" ng-click="remove1()">
+                <p>Completed tasks: </p>
+                <ul>
+                    <li ng-repeat="item in done_list"> {{ item }} </li>
+                </ul>
+            </center>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>AngularJs navigation</title>
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: rgb(240, 54, 178);
+}
+.float-child-element { 
+    float: left; 
+    width: 50%; 
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="/angular-route.js"></script>
+
+
+</head>
+<script >
+  var myApp = angular.module("AngularNavApp", ['ngRoute']);
+  myApp.config(['$routeProvider',function ($routeProvider) {
+  $routeProvider.when("/test1", { templateUrl: 'home.html', controller:'hctrl' })
+  .when("/test2", { templateUrl: 'calc.html' ,controller:'cactrl'})
+  .when("/test3", { templateUrl: 'todo.html' ,controller:'toctrl'})
+  }
+  ]);
+  myApp.controller('hctrl', function ($scope) {
+  $scope.text = 'Welcome to Web Programming Lab!!';
+  });
+  
+  myApp.controller('cactrl', function ($scope) {
+  });
+  
+  myApp.controller('toctrl', function ($scope) {
+    $scope.list = []
+    $scope.done_list = []
+    $scope.add1 = function() {
+      // var temp  = document.getElementById('add').innerText = $scope.task;
+        $scope.list.push($scope.task)
+    }
+    $scope.remove1 = function() {
+      $scope.done_list.push($scope.list[$scope.taskdone +1])
+      $scope.list.pop($scope.list[$scope.taskdone])
+    }
+  });
+  </script>
+
+<body ng-app="AngularNavApp">
+<div ng-controller="hctrl">
+
+<ul style="background-color: rgb(43, 199, 63);">
+  <li style="float: left;"><a href="#!test1">Home</a></li>
+  <li style="float: left;"><a href="#!test2">Calculator</a></li>
+  <li style="float: left;"><a href="#!test3">Todo</a></li>
+</ul>
+
+<div ng-view></div>
+
+</div>
+</body>
+</html>
